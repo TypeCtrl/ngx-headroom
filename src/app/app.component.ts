@@ -7,4 +7,10 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'app';
+  handlePin() {
+    console.log('pinned');
+  }
+  handleUnpin() {
+    console.log('unpinned');
+  }
 }

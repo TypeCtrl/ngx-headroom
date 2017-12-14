@@ -1,16 +1,20 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
+import { MdoButtonModule } from '@ctrl/ngx-github-buttons';
 
 import { AppComponent } from './app.component';
+import { HeadroomComponent } from './headroom.component';
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    HeadroomComponent,
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    MdoButtonModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
