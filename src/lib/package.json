@@ -1,0 +1,23 @@
+{
+  "name": "@ctrl/ngx-headroom",
+  "version": "0.0.1",
+  "description": "Headroom.js implementation in Angular",
+  "main": "./headroom.umd.js",
+  "module": "./headroom.es5.js",
+  "es2015": "./headroom.es2015.js",
+  "typings": "./index.d.ts",
+  "peerDependencies": {
+    "@angular/core": ">=5.0.0 <=6.0.0",
+    "@angular/common": ">=5.0.0 <=6.0.0"
+  },
+  "repository": "https://github.com/typectrl/ngx-headroom.git",
+  "homepage": "https://github.com/typectrl/ngx-headroom",
+  "license": "MIT",
+  "bugs": "https://github.com/typectrl/ngx-headroom/issues",
+  "keywords": [
+    "ngx",
+    "angular",
+    "angular-component",
+    "headroom"
+  ]
+}

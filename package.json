@@ -1,14 +1,16 @@
 {
-  "name": "ngx-headroom",
-  "version": "0.0.0",
+  "name": "@ctrl/ngx-headroom",
+  "version": "0.0.1",
   "license": "MIT",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
     "test": "ng test",
-    "lint": "ng lint",
-    "e2e": "ng e2e"
+    "lint": "ng lint --type-check -t stylish",
+    "lint:fix": "ng lint --fix --type-check -t stylish",
+    "e2e": "ng e2e",
+    "bundlesize": "npx bundlesize"
   },
   "private": true,
   "dependencies": {
@@ -16,8 +18,6 @@
     "@angular/common": "^5.1.1",
     "@angular/compiler": "^5.1.1",
     "@angular/core": "^5.1.1",
-    "@angular/forms": "^5.1.1",
-    "@angular/http": "^5.1.1",
     "@angular/platform-browser": "^5.1.1",
     "@angular/platform-browser-dynamic": "^5.1.1",
     "@angular/router": "^5.1.1",
@@ -35,6 +35,8 @@
     "@types/jasminewd2": "~2.0.3",
     "@types/node": "~8.5.1",
     "codelyzer": "^4.0.2",
+    "copy": "^0.3.1",
+    "fs-extra": "^5.0.0",
     "jasmine-core": "~2.8.0",
     "jasmine-spec-reporter": "~4.2.1",
     "karma": "~1.7.1",
@@ -44,8 +46,17 @@
     "karma-jasmine": "~1.1.1",
     "karma-jasmine-html-reporter": "^0.2.2",
     "protractor": "~5.2.2",
+    "rollup": "^0.52.1",
+    "rollup-plugin-filesize": "^1.5.0",
+    "rollup-plugin-sourcemaps": "^0.4.2",
     "ts-node": "~4.0.1",
     "tslint": "~5.8.0",
     "typescript": "2.5.x"
-  }
+  },
+  "bundlesize": [
+    {
+      "path": "./dist.js",
+      "maxSize": "3 kB"
+    }
+  ]
 }

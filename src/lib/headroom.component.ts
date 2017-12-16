@@ -1,15 +1,21 @@
 import {
+  animate,
+  state,
+  style,
+  transition,
+  trigger,
+} from '@angular/animations';
+import {
+  AfterContentInit,
+  AfterViewInit,
   Component,
-  OnInit,
-  Input,
-  OnChanges,
-  OnDestroy,
+  ElementRef,
   EventEmitter,
+  Input,
+  OnDestroy,
+  OnInit,
   Output,
   ViewChild,
-  ElementRef,
-  AfterViewInit,
-  AfterContentInit,
 } from '@angular/core';
 
 import shouldUpdate from './shouldUpdate';
@@ -23,6 +29,7 @@ import shouldUpdate from './shouldUpdate';
   >
     <div #ref
       [ngStyle]="innerStyle"
+      [@headroom]="state"
       [class]="innerClassName"
       [class.headroom]="true"
       [class.headroom--unfixed]="state === 'unfixed'"
@@ -34,17 +41,33 @@ import shouldUpdate from './shouldUpdate';
     </div>
   </div>
   `,
+  animations: [
+    trigger('headroom', [
+      state('unfixed', style({
+        transform: 'translateY(0)',
+        position: 'relative',
+      })),
+      state('unpinned', style({
+        transform: 'translateY(-100%)',
+        position: 'fixed',
+      })),
+      state('pinned', style({
+        transform: 'translateY(0px)',
+        position: 'fixed',
+      })),
+      transition('unpinned <=> pinned', animate('200ms ease-in-out')),
+    ]),
+  ],
+  preserveWhitespaces: false,
 })
-export class HeadroomComponent implements OnInit, OnChanges, AfterViewInit, AfterContentInit, OnDestroy {
+export class HeadroomComponent implements OnInit, AfterViewInit, AfterContentInit, OnDestroy {
   @Input() wrapperClassName = '';
   @Input() innerClassName = '';
-  @Input()
-  innerStyle: any = {
+  @Input() innerStyle: any = {
     top: 0,
     left: 0,
     right: 0,
     zIndex: 1,
-    transition: '',
   };
   @Input() wrapperStyle: any = {};
   @Input() disable = false;
@@ -60,12 +83,12 @@ export class HeadroomComponent implements OnInit, OnChanges, AfterViewInit, Afte
   wrapperHeight = 0;
   currentScrollY = 0;
   lastKnownScrollY = 0;
-  scrollTicking = false;
   scrolled = false;
   resizeTicking = false;
   state = 'unfixed';
   translateY = '0px';
   height: number;
+  scrollTicking = false;
   @Input() parent: () => any = () => window;
 
   constructor() {}
@@ -100,18 +123,11 @@ export class HeadroomComponent implements OnInit, OnChanges, AfterViewInit, Afte
     setTimeout(() => this.wrapperHeight = this.height ? this.height : null, 0);
 
   }
-  ngOnChanges() {
-
-  }
-
   ngOnDestroy() {
     this.parent().removeEventListener('scroll', this.handleScroll);
     this.parent().removeEventListener('scroll', this.handleScroll);
     this.parent().removeEventListener('resize', this.handleResize);
   }
-
-  setRef = ref => (this.inner = ref);
-
   setHeightOffset() {
     this.height = this.inner.nativeElement.offsetHeight;
     this.resizeTicking = false;
@@ -131,7 +147,6 @@ export class HeadroomComponent implements OnInit, OnChanges, AfterViewInit, Afte
       return node.scrollTop;
     }
   }
-
   getViewportHeight() {
     return (
       this.parent().innerHeight ||
@@ -139,7 +154,6 @@ export class HeadroomComponent implements OnInit, OnChanges, AfterViewInit, Afte
       document.body.clientHeight
     );
   }
-
   getDocumentHeight() {
     const body = document.body;
     const documentElement = document.documentElement;
@@ -153,15 +167,12 @@ export class HeadroomComponent implements OnInit, OnChanges, AfterViewInit, Afte
       documentElement.clientHeight,
     );
   }
-
-  getElementPhysicalHeight(elm) {
+  getElementPhysicalHeight(elm: any) {
     return Math.max(elm.offsetHeight, elm.clientHeight);
   }
-
-  getElementHeight(elm) {
+  getElementHeight(elm: any) {
     return Math.max(elm.scrollHeight, elm.offsetHeight, elm.clientHeight);
   }
-
   getScrollerPhysicalHeight() {
     const parent = this.parent();
 
@@ -169,7 +180,6 @@ export class HeadroomComponent implements OnInit, OnChanges, AfterViewInit, Afte
       ? this.getViewportHeight()
       : this.getElementPhysicalHeight(parent);
   }
-
   getScrollerHeight() {
     const parent = this.parent();
 
@@ -177,7 +187,6 @@ export class HeadroomComponent implements OnInit, OnChanges, AfterViewInit, Afte
       ? this.getDocumentHeight()
       : this.getElementHeight(parent);
   }
-
   isOutOfBound(currentScrollY) {
     const pastTop = currentScrollY < 0;
 
@@ -188,63 +197,30 @@ export class HeadroomComponent implements OnInit, OnChanges, AfterViewInit, Afte
 
     return pastTop || pastBottom;
   }
-
   handleScroll() {
     if (!this.scrollTicking) {
       this.scrollTicking = true;
       this.update();
     }
   }
-
   handleResize() {
     if (!this.resizeTicking) {
       this.resizeTicking = true;
       this.setHeightOffset();
     }
   }
-
   handleUnpin() {
     this.unpin.emit();
-
-    this.translateY = '-100%';
-    this.innerStyle.transform = `translateY(${this.translateY})`;
-    this.state = 'pinned';
-    this.innerStyle.position = this.disable || this.state === 'unfixed' ? 'relative' : 'fixed';
-    setTimeout(() => {
-      this.state = 'unpinned';
-      this.innerStyle.position = this.disable || this.state === 'unfixed' ? 'relative' : 'fixed';
-    }, 0);
-    if (this.innerStyle.position !== 'relative') {
-      setTimeout(() => {
-        this.innerStyle.transition = 'all .2s ease-in-out';
-      }, 200);
-    }
+    this.state = 'unpinned';
   }
-
   handlePin() {
     this.pin.emit();
-
-    this.innerStyle.position = this.disable || this.state === 'unfixed' ? 'relative' : 'fixed';
-    this.translateY = '0px';
-    this.innerStyle.transform = `translateY(${this.translateY})`;
     this.state = 'pinned';
   }
-
   handleUnfix() {
     this.unfix.emit();
-
-    this.innerStyle.transition = 'all .2s ease-in-out';
-    this.translateY = '0px';
-    this.innerStyle.transform = `translateY(${this.translateY})`;
     this.state = 'unfixed';
-    this.innerStyle.position = this.disable || this.state === 'unfixed' ? 'relative' : 'fixed';
-    if (this.innerStyle.position === 'relative') {
-      setTimeout(() => {
-        this.innerStyle.transition = '';
-      }, 200);
-    }
   }
-
   update() {
     this.currentScrollY = this.getScrollY();
 
@@ -267,10 +243,7 @@ export class HeadroomComponent implements OnInit, OnChanges, AfterViewInit, Afte
       } else if (action === 'unfix') {
         this.handleUnfix();
       }
-
-
     }
-
 
     this.lastKnownScrollY = this.currentScrollY;
     this.scrollTicking = false;
