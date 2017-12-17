@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 
 import json from '../lib/package.json';
 
@@ -7,7 +8,9 @@ import json from '../lib/package.json';
   templateUrl: './app.component.html',
 })
 export class AppComponent {
-  title = 'app';
+  constructor(title: Title) {
+    title.setTitle(`ngx-headroom ${json.version}`);
+  }
   handlePin() {
     console.log('pinned');
   }
