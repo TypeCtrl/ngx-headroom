@@ -25,7 +25,7 @@ Fixed headers are nice for persistent navigation but they can also get in the wa
 `npm install @ctrl/ngx-headroom`
 
 ## Using Angular Headroom
-Import the module. Requires 
+Import the module. Requires `@angular/animations`
 ```typescript
 // requires BrowserAnimationsModule
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
