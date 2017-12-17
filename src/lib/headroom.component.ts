@@ -73,11 +73,21 @@ export class HeadroomComponent implements OnInit, AfterViewInit, AfterContentIni
     'z-index': 1,
     position: 'relative',
   };
+  /**
+   * pass styles for the wrapper div
+   * (this maintains the components vertical space at the top of the page)
+   */
   @Input() wrapperStyle: any = {};
+  /** disable pinning and unpinning */
   @Input() disable = false;
-  @Input() disableInlineStyles = false;
+  /** scroll tolerance in px when scrolling up before component is pinned */
   @Input() upTolerance = 5;
+  /** scroll tolerance in px when scrolling down before component is pinned */
   @Input() downTolerance = 0;
+  /**
+   * height in px where the header should start and stop pinning.
+   * Useful when you have another element above Headroom
+   */
   @Input() pinStart = 0;
   @Input() calcHeightOnResize = true;
   /** Duration of animation in ms */
@@ -97,6 +107,10 @@ export class HeadroomComponent implements OnInit, AfterViewInit, AfterContentIni
   translateY = '0px';
   height: number;
   scrollTicking = false;
+  /**
+   * provide a custom 'parent' element for scroll events.
+   * `parent` should be a function which resolves to the desired element.
+   */
   @Input() parent: () => any = () => window;
 
   constructor() {}
@@ -220,17 +234,17 @@ export class HeadroomComponent implements OnInit, AfterViewInit, AfterContentIni
   handleUnpin() {
     this.unpin.emit();
     this.state = 'unpinned';
-    this.innerStyle.position = 'fixed';
+    this.innerStyle.position = this.disable || this.state === 'unfixed' ? 'relative' : 'fixed';
   }
   handlePin() {
     this.pin.emit();
     this.state = 'pinned';
-    this.innerStyle.position = 'fixed';
+    this.innerStyle.position = this.disable || this.state === 'unfixed' ? 'relative' : 'fixed';
   }
   handleUnfix() {
     this.unfix.emit();
     this.state = 'unfixed';
-    this.innerStyle.position = 'relative';
+    this.innerStyle.position = this.disable || this.state === 'unfixed' ? 'relative' : 'fixed';
   }
   update() {
     this.currentScrollY = this.getScrollY();

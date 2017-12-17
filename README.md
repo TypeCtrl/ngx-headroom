@@ -53,6 +53,8 @@ Override animation defaults by passing your own values
 
 ### Inputs
 
+*   `duration` — Duration of animation in ms
+*   `easing` — Easing of animation
 *   `upTolerance` — scroll tolerance in px when scrolling up before component is pinned
 *   `downTolerance` — scroll tolerance in px when scrolling down before component is pinned
 *   `disable` — disable pinning and unpinning

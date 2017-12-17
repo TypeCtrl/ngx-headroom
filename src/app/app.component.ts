@@ -9,7 +9,9 @@ import json from '../lib/package.json';
 })
 export class AppComponent {
   constructor(title: Title) {
-    title.setTitle(`ngx-headroom ${json.version}`);
+    if (json) {
+      title.setTitle(`ngx-headroom ${json.version}`);
+    }
   }
   handlePin() {
     console.log('pinned');
