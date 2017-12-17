@@ -1,16 +1,14 @@
 <div align="center">
   <h1>ngx-headroom</h1>
   <br>
-  <a href="https://www.npmjs.org/package/@ctrl/ngx-headroom">
-    <img src="https://badge.fury.io/js/@ctrl/ngx-headroom.svg" alt="npm">
+  <a href="https://www.npmjs.com/package/@ctrl/ngx-headroom">
+    <img src="https://badge.fury.io/js/%40ctrl%2Fngx-headroom.svg" alt="npm">
   </a> 
-  <a href="https://travis-ci.org/typectrl/ngx-headroom">
-    <img src="https://travis-ci.org/typectrl/ngx-headroom.svg?branch=master" alt="travis"></a> 
+  <a href="https://travis-ci.org/TypeCtrl/ngx-headroom">
+    <img src="https://travis-ci.org/TypeCtrl/ngx-headroom.svg?branch=master" alt="travis">
+  </a> 
   <a href="https://codecov.io/github/typectrl/ngx-headroom">
     <img src="https://img.shields.io/codecov/c/github/typectrl/ngx-headroom.svg" alt="codecov">
-  </a>
-  <a href="https://greenkeeper.io/">
-    <img src="https://badges.greenkeeper.io/typectrl/ngx-headroom.svg" alt="greenkeeper">
   </a>
   <br>
   DEMO: https://typectrl.github.io/ngx-headroom/

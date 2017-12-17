@@ -6,6 +6,7 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "rimraf dist && ng-packagr -p src/lib/package.json",
+    "publish": "node prepublish.js && cd dist && npm publish --access public",
     "test": "ng test",
     "lint": "ng lint --type-check -t stylish",
     "lint:fix": "ng lint --fix --type-check -t stylish",
