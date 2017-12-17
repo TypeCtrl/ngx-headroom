@@ -5,7 +5,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng-packagr -p src/lib/package.json",
+    "build": "rimraf dist && ng-packagr -p src/lib/package.json",
     "test": "ng test",
     "lint": "ng lint --type-check -t stylish",
     "lint:fix": "ng lint --fix --type-check -t stylish",
@@ -45,6 +45,7 @@
     "karma-jasmine-html-reporter": "^0.2.2",
     "ng-packagr": "2.0.0-rc.7",
     "protractor": "~5.2.2",
+    "rimraf": "^2.6.2",
     "ts-node": "~4.0.2",
     "tslint": "~5.8.0",
     "typescript": "2.5.x"

@@ -5,12 +5,14 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MdoButtonModule } from '@ctrl/ngx-github-buttons';
 
 import { AppComponent } from './app.component';
-import { HeadroomModule } from '../lib/headroom.module';
+import { HeadroomModule } from '../lib/public_api';
+import { AppFooterComponent } from './app-footer/app-footer.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
+    AppFooterComponent,
   ],
   imports: [
     BrowserModule,

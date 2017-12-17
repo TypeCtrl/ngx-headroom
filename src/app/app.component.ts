@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
 
+import json from '../lib/package.json';
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
 })
 export class AppComponent {
   title = 'app';

@@ -29,7 +29,13 @@ import shouldUpdate from './shouldUpdate';
   >
     <div #ref
       [ngStyle]="innerStyle"
-      [@headroom]="state"
+      [@headroom]="{
+        value: state,
+        params: {
+          duration: duration,
+          easing: easing
+        }
+      }"
       [class]="innerClassName"
       [class.headroom]="true"
       [class.headroom--unfixed]="state === 'unfixed'"
@@ -45,17 +51,14 @@ import shouldUpdate from './shouldUpdate';
     trigger('headroom', [
       state('unfixed', style({
         transform: 'translateY(0)',
-        position: 'relative',
       })),
       state('unpinned', style({
         transform: 'translateY(-100%)',
-        position: 'fixed',
       })),
       state('pinned', style({
         transform: 'translateY(0px)',
-        position: 'fixed',
       })),
-      transition('unpinned <=> pinned', animate('200ms ease-in-out')),
+      transition('unpinned <=> pinned', animate('{{ duration }}ms {{ easing }}')),
     ]),
   ],
   preserveWhitespaces: false,
@@ -67,7 +70,8 @@ export class HeadroomComponent implements OnInit, AfterViewInit, AfterContentIni
     top: 0,
     left: 0,
     right: 0,
-    zIndex: 1,
+    'z-index': 1,
+    position: 'relative',
   };
   @Input() wrapperStyle: any = {};
   @Input() disable = false;
@@ -76,6 +80,10 @@ export class HeadroomComponent implements OnInit, AfterViewInit, AfterContentIni
   @Input() downTolerance = 0;
   @Input() pinStart = 0;
   @Input() calcHeightOnResize = true;
+  /** Duration of animation in ms */
+  @Input() duration = 200;
+  /** Easing of animation */
+  @Input() easing = 'ease-in-out';
   @Output() pin = new EventEmitter();
   @Output() unpin = new EventEmitter();
   @Output() unfix = new EventEmitter();
@@ -212,14 +220,17 @@ export class HeadroomComponent implements OnInit, AfterViewInit, AfterContentIni
   handleUnpin() {
     this.unpin.emit();
     this.state = 'unpinned';
+    this.innerStyle.position = 'fixed';
   }
   handlePin() {
     this.pin.emit();
     this.state = 'pinned';
+    this.innerStyle.position = 'fixed';
   }
   handleUnfix() {
     this.unfix.emit();
     this.state = 'unfixed';
+    this.innerStyle.position = 'relative';
   }
   update() {
     this.currentScrollY = this.getScrollY();
