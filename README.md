@@ -43,7 +43,7 @@ The component is intended to be plug 'n play meaning it has sensible defaults fo
 
 Override animation defaults by passing your own values
 
-```javascript
+```html
 <ngx-headroom duration="500" easing="ease-in-out">
   <h1>You can put anything you'd like inside the Headroom Component</h1>
 </ngx-headroom>
