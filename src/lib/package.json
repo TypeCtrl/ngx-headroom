@@ -1,9 +1,10 @@
 {
   "$schema": "../../node_modules/ng-packagr/package.schema.json",
   "name": "@ctrl/ngx-headroom",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Headroom.js implementation in Angular",
   "peerDependencies": {
+    "@angular/animations": ">=5.0.0 <=6.0.0",
     "@angular/core": ">=5.0.0 <=6.0.0",
     "@angular/common": ">=5.0.0 <=6.0.0"
   },
