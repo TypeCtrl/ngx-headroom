@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import { MdoButtonModule } from '@ctrl/ngx-github-buttons';
+import { NtkmeButtonModule } from '@ctrl/ngx-github-buttons';
 
 import { HeadroomModule } from '../lib/public_api';
 import { AppFooterComponent } from './app-footer/app-footer.component';
@@ -17,7 +17,7 @@ import { AppComponent } from './app.component';
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    MdoButtonModule,
+    NtkmeButtonModule,
     HeadroomModule,
   ],
   providers: [],
