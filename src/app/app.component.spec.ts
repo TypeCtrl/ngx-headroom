@@ -1,6 +1,6 @@
 import { async, TestBed } from '@angular/core/testing';
 
-import { MdoButtonModule } from '@ctrl/ngx-github-buttons';
+import { NtkmeButtonModule } from '@ctrl/ngx-github-buttons';
 
 import { HeadroomModule } from '../lib/public_api';
 import { AppFooterComponent } from './app-footer/app-footer.component';
@@ -10,7 +10,7 @@ describe('AppComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [AppComponent, AppFooterComponent],
-      imports: [MdoButtonModule, HeadroomModule],
+      imports: [NtkmeButtonModule, HeadroomModule],
     }).compileComponents();
   }));
   it('should create the app', async(() => {
