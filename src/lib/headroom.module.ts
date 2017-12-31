@@ -7,6 +7,5 @@ import { HeadroomComponent } from './headroom.component';
   imports: [CommonModule],
   exports: [HeadroomComponent],
   declarations: [HeadroomComponent],
-  providers: [],
 })
 export class HeadroomModule { }

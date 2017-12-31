@@ -1,12 +1,12 @@
 export default function(
   lastKnownScrollY = 0,
   currentScrollY = 0,
-  disable,
-  pinStart,
-  downTolerance,
-  upTolerance,
-  state: string,
-  height: number,
+  disable?: boolean,
+  pinStart?: number,
+  downTolerance?: number,
+  upTolerance?: number,
+  state?: string,
+  height?: number,
 ) {
   const scrollDirection = currentScrollY >= lastKnownScrollY ? 'down' : 'up';
   const distanceScrolled = Math.abs(currentScrollY - lastKnownScrollY);
