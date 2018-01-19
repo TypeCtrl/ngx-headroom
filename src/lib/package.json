@@ -1,12 +1,12 @@
 {
   "$schema": "../../node_modules/ng-packagr/package.schema.json",
   "name": "@ctrl/ngx-headroom",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Headroom.js implementation in Angular",
   "peerDependencies": {
-    "@angular/animations": ">=5.0.0 <=6.0.0",
-    "@angular/core": ">=5.0.0 <=6.0.0",
-    "@angular/common": ">=5.0.0 <=6.0.0"
+    "@angular/animations": ">=5.0.0",
+    "@angular/core": ">=5.0.0",
+    "@angular/common": ">=5.0.0"
   },
   "repository": "https://github.com/typectrl/ngx-headroom.git",
   "homepage": "https://github.com/typectrl/ngx-headroom",
