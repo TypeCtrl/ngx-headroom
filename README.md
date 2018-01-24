@@ -68,3 +68,8 @@ Override animation defaults by passing your own values
 *   `pin` - emitted when header is pinned
 *   `unpin` - emitted when header is unpinned
 *   `unfix` - emitted when header position is no longer fixed
+
+---
+
+> GitHub [@scttcper](https://github.com/scttcper) &nbsp;&middot;&nbsp;
+> Twitter [@scttcper](https://twitter.com/scttcper)
