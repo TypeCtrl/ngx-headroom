@@ -67,10 +67,10 @@ export class HeadroomComponent implements OnInit, AfterViewInit, AfterContentIni
   @Input() wrapperClassName = '';
   @Input() innerClassName = '';
   @Input() innerStyle: any = {
-    top: 0,
-    left: 0,
-    right: 0,
-    'z-index': 1,
+    top: '0',
+    left: '0',
+    right: '0',
+    zIndex: '1',
     position: 'relative',
   };
   /**
