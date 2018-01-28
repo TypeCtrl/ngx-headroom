@@ -26,7 +26,7 @@ Fixed headers are nice for persistent navigation but they can also get in the wa
 
 ## Using Angular Headroom
 Import the module. Requires `@angular/animations`
-```typescript
+```ts
 // requires BrowserAnimationsModule
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 // import HeadroomModule
