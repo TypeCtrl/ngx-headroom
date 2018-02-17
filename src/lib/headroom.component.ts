@@ -7,7 +7,6 @@ import {
 } from '@angular/animations';
 import {
   AfterContentInit,
-  AfterViewInit,
   Component,
   ElementRef,
   EventEmitter,
@@ -63,7 +62,7 @@ import shouldUpdate from './shouldUpdate';
   ],
   preserveWhitespaces: false,
 })
-export class HeadroomComponent implements OnInit, AfterViewInit, AfterContentInit, OnDestroy {
+export class HeadroomComponent implements OnInit, AfterContentInit, OnDestroy {
   @Input() wrapperClassName = '';
   @Input() innerClassName = '';
   @Input() innerStyle: any = {
@@ -113,8 +112,6 @@ export class HeadroomComponent implements OnInit, AfterViewInit, AfterContentIni
    */
   @Input() parent: () => any = () => window;
 
-  constructor() {}
-
   ngOnInit() {
     this.innerStyle.transform = `translateY(${this.translateY})`;
 
@@ -131,9 +128,6 @@ export class HeadroomComponent implements OnInit, AfterViewInit, AfterContentIni
     }
   }
   ngAfterContentInit() {
-
-  }
-  ngAfterViewInit() {
     this.setHeightOffset();
     if (!this.disable) {
       this.parent().addEventListener('scroll', () => this.handleScroll());
@@ -142,8 +136,8 @@ export class HeadroomComponent implements OnInit, AfterViewInit, AfterContentIni
         this.parent().addEventListener('resize', () => this.handleResize());
       }
     }
-    setTimeout(() => this.wrapperHeight = this.height ? this.height : null, 0);
-
+    this.wrapperHeight = this.height ? this.height : null;
+    console.log(this.wrapperHeight);
   }
   ngOnDestroy() {
     this.parent().removeEventListener('scroll', this.handleScroll);
