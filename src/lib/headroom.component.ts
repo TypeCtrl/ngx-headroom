@@ -137,7 +137,6 @@ export class HeadroomComponent implements OnInit, AfterContentInit, OnDestroy {
       }
     }
     this.wrapperHeight = this.height ? this.height : null;
-    console.log(this.wrapperHeight);
   }
   ngOnDestroy() {
     this.parent().removeEventListener('scroll', this.handleScroll);
