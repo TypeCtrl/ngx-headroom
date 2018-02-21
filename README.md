@@ -11,10 +11,10 @@
     <img src="https://img.shields.io/codecov/c/github/typectrl/ngx-headroom.svg" alt="codecov">
   </a>
   <br>
-  DEMO: https://typectrl.github.io/ngx-headroom/
+  <br>
 </div>
-<br>
-<br>
+
+DEMO: https://typectrl.github.io/ngx-headroom/
 
 An Angular Component to hide/show your header on scroll. A port of of [React Headroom](https://github.com/KyleAMathews/react-headroom) by KyleAMathews. 
 
