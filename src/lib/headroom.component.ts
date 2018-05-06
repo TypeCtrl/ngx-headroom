@@ -22,10 +22,8 @@ import shouldUpdate from './shouldUpdate';
 @Component({
   selector: 'ngx-headroom',
   template: `
-  <div [ngStyle]="wrapperStyle"
-    [style.height.px]="wrapperHeight"
-    class="headroom-wrapper {{ wrapperClassName }}"
-  >
+  <div [ngStyle]="wrapperStyle" class="headroom-wrapper {{ wrapperClassName }}"
+    [style.height.px]="wrapperHeight">
     <div #ref
       [ngStyle]="innerStyle"
       [@headroom]="{
@@ -40,8 +38,7 @@ import shouldUpdate from './shouldUpdate';
       [class.headroom--unfixed]="state === 'unfixed'"
       [class.headroom--unpinned]="state === 'unpinned'"
       [class.headroom--pinned]="state === 'pinned'"
-      [class.headroom--unfixed]="state === 'unfixed'"
-    >
+      [class.headroom--unfixed]="state === 'unfixed'">
       <ng-content></ng-content>
     </div>
   </div>
