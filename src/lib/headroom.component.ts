@@ -7,11 +7,12 @@ import {
 } from '@angular/animations';
 import {
   AfterContentInit,
+  ChangeDetectionStrategy,
   Component,
   ElementRef,
   EventEmitter,
+  HostListener,
   Input,
-  OnDestroy,
   OnInit,
   Output,
   ViewChild,
@@ -25,7 +26,6 @@ import shouldUpdate from './shouldUpdate';
   <div [ngStyle]="wrapperStyle" class="headroom-wrapper {{ wrapperClassName }}"
     [style.height.px]="wrapperHeight">
     <div #ref
-      [ngStyle]="innerStyle"
       [@headroom]="{
         value: state,
         params: {
@@ -33,6 +33,7 @@ import shouldUpdate from './shouldUpdate';
           easing: easing
         }
       }"
+      [ngStyle]="innerStyle"
       [class]="innerClassName"
       [class.headroom]="true"
       [class.headroom--unfixed]="state === 'unfixed'"
@@ -58,8 +59,9 @@ import shouldUpdate from './shouldUpdate';
     ]),
   ],
   preserveWhitespaces: false,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class HeadroomComponent implements OnInit, AfterContentInit, OnDestroy {
+export class HeadroomComponent implements OnInit, AfterContentInit {
   @Input() wrapperClassName = '';
   @Input() innerClassName = '';
   @Input() innerStyle: any = {
@@ -108,37 +110,23 @@ export class HeadroomComponent implements OnInit, AfterContentInit, OnDestroy {
    * `parent` should be a function which resolves to the desired element.
    */
   @Input() parent: () => any = () => window;
+  @Input() @HostListener('window:scroll') scroll() {
+    this.handleScroll();
+  }
+  @Input() @HostListener('window:resize') resize() {
+    this.handleResize();
+  }
 
   ngOnInit() {
     this.innerStyle.transform = `translateY(${this.translateY})`;
 
-    if (this.disable && !this.disable) {
+    if (this.disable === true) {
       this.handleUnfix();
-      this.parent().removeEventListener('scroll', this.handleScroll);
-      this.parent().removeEventListener('resize', this.handleResize);
-    } else if (!this.disable && this.disable) {
-      this.parent().addEventListener('scroll', this.handleScroll);
-
-      if (this.calcHeightOnResize) {
-        this.parent().addEventListener('resize', this.handleResize);
-      }
     }
   }
   ngAfterContentInit() {
     this.setHeightOffset();
-    if (!this.disable) {
-      this.parent().addEventListener('scroll', () => this.handleScroll());
-
-      if (this.calcHeightOnResize) {
-        this.parent().addEventListener('resize', () => this.handleResize());
-      }
-    }
     this.wrapperHeight = this.height ? this.height : null;
-  }
-  ngOnDestroy() {
-    this.parent().removeEventListener('scroll', this.handleScroll);
-    this.parent().removeEventListener('scroll', this.handleScroll);
-    this.parent().removeEventListener('resize', this.handleResize);
   }
   setHeightOffset() {
     this.height = this.inner.nativeElement.offsetHeight;
@@ -210,12 +198,18 @@ export class HeadroomComponent implements OnInit, AfterContentInit, OnDestroy {
     return pastTop || pastBottom;
   }
   handleScroll() {
+    if (this.disable) {
+      return;
+    }
     if (!this.scrollTicking) {
       this.scrollTicking = true;
       this.update();
     }
   }
   handleResize() {
+    if (this.disable || !this.calcHeightOnResize) {
+      return;
+    }
     if (!this.resizeTicking) {
       this.resizeTicking = true;
       this.setHeightOffset();
