@@ -54,6 +54,13 @@
     "tslint": "5.10.0",
     "typescript": "2.7.2"
   },
+  "engines": {
+    "npm": ">= 6",
+    "node": ">= 8"
+  },
+  "release": {
+    "branch": "master"
+  },
   "bundlesize": [
     {
       "path": "./dist/bundles/ctrl-ngx-headroom.umd.js",
