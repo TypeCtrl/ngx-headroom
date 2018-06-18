@@ -40,7 +40,7 @@
     "@types/node": "10.1.4",
     "codelyzer": "4.3.0",
     "jasmine-core": "2.99.1",
-    "karma": "2.0.2",
+    "karma": "2.0.3",
     "karma-chrome-launcher": "2.2.0",
     "karma-cli": "1.0.1",
     "karma-coverage-istanbul-reporter": "2.0.1",
