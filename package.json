@@ -37,7 +37,7 @@
     "@angular/language-service": "6.0.6",
     "@types/jasmine": "2.8.8",
     "@types/jasminewd2": "2.0.3",
-    "@types/node": "10.1.4",
+    "@types/node": "10.5.1",
     "codelyzer": "4.3.0",
     "jasmine-core": "2.99.1",
     "karma": "2.0.4",
