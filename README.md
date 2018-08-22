@@ -16,7 +16,7 @@
 
 DEMO: https://typectrl.github.io/ngx-headroom/
 
-An Angular Component to hide/show your header on scroll. A port of of [React Headroom](https://github.com/KyleAMathews/react-headroom) by KyleAMathews. 
+An Angular Component to hide/show your header on scroll. A port of of [React Headroom](https://github.com/KyleAMathews/react-headroom) by KyleAMathews which was based around [headroom.js](https://github.com/WickyNilliams/headroom.js)
 
 Fixed headers are nice for persistent navigation but they can also get in the way by taking up valuable vertical screen space. Using this component lets you have your persistent navigation while preserving screen space when the navigation is not needed.
 
