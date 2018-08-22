@@ -71,6 +71,7 @@
             "polyfills": "src/polyfills.ts",
             "tsConfig": "src/tsconfig.spec.json",
             "karmaConfig": "src/karma.conf.js",
+            "browsers": "ChromeCI",
             "styles": [
               "src/styles.scss"
             ],
