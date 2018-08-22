@@ -5,6 +5,7 @@ import {
   transition,
   trigger,
 } from '@angular/animations';
+import { DOCUMENT } from '@angular/common';
 import {
   AfterContentInit,
   ChangeDetectionStrategy,
@@ -12,6 +13,7 @@ import {
   ElementRef,
   EventEmitter,
   HostListener,
+  Inject,
   Input,
   OnInit,
   Output,
@@ -46,16 +48,28 @@ import shouldUpdate from './shouldUpdate';
   `,
   animations: [
     trigger('headroom', [
-      state('unfixed', style({
-        transform: 'translateY(0)',
-      })),
-      state('unpinned', style({
-        transform: 'translateY(-100%)',
-      })),
-      state('pinned', style({
-        transform: 'translateY(0px)',
-      })),
-      transition('unpinned <=> pinned', animate('{{ duration }}ms {{ easing }}')),
+      state(
+        'unfixed',
+        style({
+          transform: 'translateY(0)',
+        }),
+      ),
+      state(
+        'unpinned',
+        style({
+          transform: 'translateY(-100%)',
+        }),
+      ),
+      state(
+        'pinned',
+        style({
+          transform: 'translateY(0px)',
+        }),
+      ),
+      transition(
+        'unpinned <=> pinned',
+        animate('{{ duration }}ms {{ easing }}'),
+      ),
     ]),
   ],
   preserveWhitespaces: false,
@@ -91,7 +105,8 @@ export class HeadroomComponent implements OnInit, AfterContentInit {
   /** Duration of animation in ms */
   @Input() duration = 200;
   /** Easing of animation */
-  @Input() easing = 'ease-in-out';
+  @Input()
+  easing = 'ease-in-out';
   @Output() pin = new EventEmitter();
   @Output() unpin = new EventEmitter();
   @Output() unfix = new EventEmitter();
@@ -109,13 +124,18 @@ export class HeadroomComponent implements OnInit, AfterContentInit {
    * provide a custom 'parent' element for scroll events.
    * `parent` should be a function which resolves to the desired element.
    */
-  @Input() parent: () => any = () => window;
-  @Input() @HostListener('window:scroll') scroll() {
+  @Input() parent: () => any;
+  @Input() @HostListener('window:scroll')
+  scroll() {
     this.handleScroll();
   }
-  @Input() @HostListener('window:resize') resize() {
+  @Input()
+  @HostListener('window:resize')
+  resize() {
     this.handleResize();
   }
+
+  constructor(@Inject(DOCUMENT) private _document: any) {}
 
   ngOnInit() {
     this.innerStyle.transform = `translateY(${this.translateY})`;
@@ -123,6 +143,12 @@ export class HeadroomComponent implements OnInit, AfterContentInit {
     if (this.disable === true) {
       this.handleUnfix();
     }
+  }
+  getParent() {
+    if (this.parent) {
+      return this.parent();
+    }
+    return this._document;
   }
   ngAfterContentInit() {
     this.setHeightOffset();
@@ -132,31 +158,29 @@ export class HeadroomComponent implements OnInit, AfterContentInit {
     this.height = this.inner.nativeElement.offsetHeight;
     this.resizeTicking = false;
   }
-
   getScrollY() {
-    if (this.parent().pageYOffset !== undefined) {
-      return this.parent().pageYOffset;
-    } else if (this.parent().scrollTop !== undefined) {
-      return this.parent().scrollTop;
+    if (this.getParent().pageYOffset !== undefined) {
+      return this.getParent().pageYOffset;
+    } else if (this.getParent().scrollTop !== undefined) {
+      return this.getParent().scrollTop;
     } else {
-      const node: any = (
-        document.documentElement ||
-        document.body.parentNode ||
-        document.body
-      );
+      const node: any =
+        this._document.documentElement ||
+        this._document.body.parentNode ||
+        this._document.body;
       return node.scrollTop;
     }
   }
   getViewportHeight() {
     return (
-      this.parent().innerHeight ||
-      document.documentElement.clientHeight ||
-      document.body.clientHeight
+      this.getParent().innerHeight ||
+      this._document.documentElement.clientHeight ||
+      this._document.body.clientHeight
     );
   }
   getDocumentHeight() {
-    const body = document.body;
-    const documentElement = document.documentElement;
+    const body = this._document.body;
+    const documentElement = this._document.documentElement;
 
     return Math.max(
       body.scrollHeight,
@@ -174,16 +198,16 @@ export class HeadroomComponent implements OnInit, AfterContentInit {
     return Math.max(elm.scrollHeight, elm.offsetHeight, elm.clientHeight);
   }
   getScrollerPhysicalHeight() {
-    const parent = this.parent();
+    const parent = this.getParent();
 
-    return parent === this.parent() || parent === document.body
+    return parent === this.getParent() || parent === this._document.body
       ? this.getViewportHeight()
       : this.getElementPhysicalHeight(parent);
   }
   getScrollerHeight() {
-    const parent = this.parent();
+    const parent = this.getParent();
 
-    return parent === this.parent() || parent === document.body
+    return parent === this.getParent() || parent === this._document.body
       ? this.getDocumentHeight()
       : this.getElementHeight(parent);
   }
@@ -218,17 +242,20 @@ export class HeadroomComponent implements OnInit, AfterContentInit {
   handleUnpin() {
     this.unpin.emit();
     this.state = 'unpinned';
-    this.innerStyle.position = this.disable || this.state === 'unfixed' ? 'relative' : 'fixed';
+    this.innerStyle.position =
+      this.disable || this.state === 'unfixed' ? 'relative' : 'fixed';
   }
   handlePin() {
     this.pin.emit();
     this.state = 'pinned';
-    this.innerStyle.position = this.disable || this.state === 'unfixed' ? 'relative' : 'fixed';
+    this.innerStyle.position =
+      this.disable || this.state === 'unfixed' ? 'relative' : 'fixed';
   }
   handleUnfix() {
     this.unfix.emit();
     this.state = 'unfixed';
-    this.innerStyle.position = this.disable || this.state === 'unfixed' ? 'relative' : 'fixed';
+    this.innerStyle.position =
+      this.disable || this.state === 'unfixed' ? 'relative' : 'fixed';
   }
   update() {
     this.currentScrollY = this.getScrollY();
