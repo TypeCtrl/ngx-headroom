@@ -22,7 +22,9 @@ Fixed headers are nice for persistent navigation but they can also get in the wa
 
 ## Install
 
-`npm install @ctrl/ngx-headroom`
+```sh
+npm install @ctrl/ngx-headroom
+```
 
 ## Using Angular Headroom
 Import the module. Requires `@angular/animations`
