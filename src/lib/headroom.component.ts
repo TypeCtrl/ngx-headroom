@@ -105,8 +105,7 @@ export class HeadroomComponent implements OnInit, AfterContentInit {
   /** Duration of animation in ms */
   @Input() duration = 200;
   /** Easing of animation */
-  @Input()
-  easing = 'ease-in-out';
+  @Input() easing = 'ease-in-out';
   @Output() pin = new EventEmitter();
   @Output() unpin = new EventEmitter();
   @Output() unfix = new EventEmitter();
@@ -148,6 +147,15 @@ export class HeadroomComponent implements OnInit, AfterContentInit {
     if (this.parent) {
       return this.parent();
     }
+    if (this._document.documentElement && this._document.documentElement.scrollTop) {
+      return this._document.documentElement;
+    }
+    if (this._document.body && this._document.body.scrollTop) {
+      return this._document.body;
+    }
+    if (this._document.body && this._document.body.parentNode.scrollTop) {
+      return this._document.body.parentNode;
+    }
     return this._document;
   }
   ngAfterContentInit() {
@@ -161,15 +169,8 @@ export class HeadroomComponent implements OnInit, AfterContentInit {
   getScrollY() {
     if (this.getParent().pageYOffset !== undefined) {
       return this.getParent().pageYOffset;
-    } else if (this.getParent().scrollTop !== undefined) {
-      return this.getParent().scrollTop;
-    } else {
-      const node: any =
-        this._document.documentElement ||
-        this._document.body.parentNode ||
-        this._document.body;
-      return node.scrollTop;
     }
+    return this.getParent().scrollTop || 0;
   }
   getViewportHeight() {
     return (
