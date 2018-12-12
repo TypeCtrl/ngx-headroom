@@ -117,7 +117,7 @@ export class HeadroomComponent implements OnInit, AfterContentInit {
   resizeTicking = false;
   state = 'unfixed';
   translateY = '0px';
-  height: number | 'auto';
+  height: number;
   scrollTicking = false;
   /**
    * provide a custom 'parent' element for scroll events.
@@ -163,7 +163,7 @@ export class HeadroomComponent implements OnInit, AfterContentInit {
     this.wrapperHeight = this.height ? this.height : null;
   }
   setHeightOffset() {
-    this.height = 'auto';
+    this.height = null;
     setTimeout(() => {
       this.height = this.inner.nativeElement.offsetHeight;
       this.resizeTicking = false;
