@@ -167,7 +167,7 @@ export class HeadroomComponent implements OnInit, AfterContentInit {
     setTimeout(() => {
       this.height = this.inner.nativeElement.offsetHeight;
       this.resizeTicking = false;
-    },0);
+    }, 0);
   }
   getScrollY() {
     if (this.getParent().pageYOffset !== undefined) {
