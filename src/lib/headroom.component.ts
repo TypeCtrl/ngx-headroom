@@ -117,7 +117,7 @@ export class HeadroomComponent implements OnInit, AfterContentInit {
   resizeTicking = false;
   state = 'unfixed';
   translateY = '0px';
-  height: number;
+  height: number | 'auto';
   scrollTicking = false;
   /**
    * provide a custom 'parent' element for scroll events.
