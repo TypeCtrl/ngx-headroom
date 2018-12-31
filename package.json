@@ -2,6 +2,8 @@
   "name": "@ctrl/ngx-headroom",
   "version": "0.0.0",
   "license": "MIT",
+  "repository": "typectrl/ngx-headroom",
+  "homepage": "https://github.com/typectrl/ngx-headroom",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -11,49 +13,45 @@
     "lint": "ng lint",
     "lint:fix": "ng lint ngx-headroom --fix",
     "ghpages": "ng build --prod --no-progress --baseHref='/ngx-headroom/'",
-    "bundlesize": "npx bundlesize",
-    "commit": "git-cz",
-    "travis-deploy-once": "travis-deploy-once",
     "semantic-release": "cd dist && semantic-release"
   },
   "private": true,
   "dependencies": {
-    "@angular/animations": "7.0.4",
-    "@angular/common": "7.0.4",
-    "@angular/compiler": "7.0.4",
-    "@angular/core": "7.0.4",
-    "@angular/platform-browser": "7.0.4",
-    "@angular/platform-browser-dynamic": "7.0.4",
+    "@angular/animations": "7.1.4",
+    "@angular/common": "7.1.4",
+    "@angular/compiler": "7.1.4",
+    "@angular/core": "7.1.4",
+    "@angular/platform-browser": "7.1.4",
+    "@angular/platform-browser-dynamic": "7.1.4",
     "@ctrl/ngx-github-buttons": "2.1.0",
-    "bootstrap": "4.1.3",
-    "core-js": "2.5.7",
+    "bootstrap": "4.2.1",
+    "core-js": "2.6.1",
     "rxjs": "6.3.3",
     "zone.js": "0.8.26"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "0.10.7",
-    "@angular/cli": "7.0.1",
-    "@angular/compiler-cli": "7.0.4",
-    "@angular/language-service": "7.0.4",
-    "@types/jasmine": "2.8.9",
-    "@types/node": "10.12.0",
+    "@angular-devkit/build-angular": "0.11.4",
+    "@angular/cli": "7.1.4",
+    "@angular/compiler-cli": "7.1.4",
+    "@angular/language-service": "7.1.4",
+    "@types/jasmine": "3.3.5",
+    "@types/node": "10.12.18",
     "codelyzer": "4.5.0",
-    "jasmine-core": "3.2.1",
-    "karma": "3.0.0",
+    "jasmine-core": "3.3.0",
+    "karma": "3.1.4",
     "karma-chrome-launcher": "2.2.0",
-    "karma-cli": "1.0.1",
+    "karma-cli": "2.0.0",
     "karma-coverage-istanbul-reporter": "2.0.4",
-    "karma-jasmine": "1.1.2",
-    "karma-jasmine-html-reporter": "1.3.1",
+    "karma-jasmine": "2.0.1",
+    "karma-jasmine-html-reporter": "1.4.0",
     "karma-mocha-reporter": "2.2.5",
-    "ng-packagr": "4.3.1",
+    "ng-packagr": "4.4.5",
     "rimraf": "2.6.2",
-    "semantic-release": "15.10.3",
-    "travis-deploy-once": "5.0.9",
+    "semantic-release": "15.13.2",
     "ts-node": "7.0.1",
-    "tsickle": "0.33.0",
-    "tslint": "5.11.0",
-    "typescript": "3.1.3"
+    "tsickle": "0.34.0",
+    "tslint": "5.12.0",
+    "typescript": "3.1.6"
   },
   "engines": {
     "npm": ">= 6",
@@ -61,19 +59,5 @@
   },
   "release": {
     "branch": "master"
-  },
-  "bundlesize": [
-    {
-      "path": "./dist/bundles/ctrl-ngx-headroom.umd.min.js",
-      "maxSize": "2 kB"
-    },
-    {
-      "path": "./dist/esm5/ctrl-ngx-headroom.js",
-      "maxSize": "3 kB"
-    },
-    {
-      "path": "./dist/esm2015/ctrl-ngx-headroom.js",
-      "maxSize": "3 kB"
-    }
-  ]
+  }
 }
