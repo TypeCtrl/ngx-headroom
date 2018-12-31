@@ -163,8 +163,11 @@ export class HeadroomComponent implements OnInit, AfterContentInit {
     this.wrapperHeight = this.height ? this.height : null;
   }
   setHeightOffset() {
-    this.height = this.inner.nativeElement.offsetHeight;
-    this.resizeTicking = false;
+    this.height = null;
+    setTimeout(() => {
+      this.height = this.inner.nativeElement.offsetHeight;
+      this.resizeTicking = false;
+    }, 0);
   }
   getScrollY() {
     if (this.getParent().pageYOffset !== undefined) {
