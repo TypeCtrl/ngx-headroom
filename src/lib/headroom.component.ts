@@ -134,7 +134,7 @@ export class HeadroomComponent implements OnInit, AfterContentInit {
     this.handleResize();
   }
 
-  constructor(@Inject(DOCUMENT) private _document: any) {}
+  constructor(@Inject(DOCUMENT) private document: any) {}
 
   ngOnInit() {
     this.innerStyle.transform = `translateY(${this.translateY})`;
@@ -147,16 +147,16 @@ export class HeadroomComponent implements OnInit, AfterContentInit {
     if (this.parent) {
       return this.parent();
     }
-    if (this._document.documentElement && this._document.documentElement.scrollTop) {
-      return this._document.documentElement;
+    if (this.document.documentElement && this.document.documentElement.scrollTop) {
+      return this.document.documentElement;
     }
-    if (this._document.body && this._document.body.scrollTop) {
-      return this._document.body;
+    if (this.document.body && this.document.body.scrollTop) {
+      return this.document.body;
     }
-    if (this._document.body && this._document.body.parentNode.scrollTop) {
-      return this._document.body.parentNode;
+    if (this.document.body && this.document.body.parentNode.scrollTop) {
+      return this.document.body.parentNode;
     }
-    return this._document;
+    return this.document;
   }
   ngAfterContentInit() {
     this.setHeightOffset();
@@ -178,13 +178,13 @@ export class HeadroomComponent implements OnInit, AfterContentInit {
   getViewportHeight() {
     return (
       this.getParent().innerHeight ||
-      this._document.documentElement.clientHeight ||
-      this._document.body.clientHeight
+      this.document.documentElement.clientHeight ||
+      this.document.body.clientHeight
     );
   }
   getDocumentHeight() {
-    const body = this._document.body;
-    const documentElement = this._document.documentElement;
+    const body = this.document.body;
+    const documentElement = this.document.documentElement;
 
     return Math.max(
       body.scrollHeight,
@@ -204,14 +204,14 @@ export class HeadroomComponent implements OnInit, AfterContentInit {
   getScrollerPhysicalHeight() {
     const parent = this.getParent();
 
-    return parent === this.getParent() || parent === this._document.body
+    return parent === this.getParent() || parent === this.document.body
       ? this.getViewportHeight()
       : this.getElementPhysicalHeight(parent);
   }
   getScrollerHeight() {
     const parent = this.getParent();
 
-    return parent === this.getParent() || parent === this._document.body
+    return parent === this.getParent() || parent === this.document.body
       ? this.getDocumentHeight()
       : this.getElementHeight(parent);
   }
