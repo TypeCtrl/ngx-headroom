@@ -109,7 +109,7 @@ export class HeadroomComponent implements OnInit, AfterContentInit {
   @Output() pin = new EventEmitter();
   @Output() unpin = new EventEmitter();
   @Output() unfix = new EventEmitter();
-  @ViewChild('ref') inner: ElementRef;
+  @ViewChild('ref', { static: true }) inner: ElementRef;
   wrapperHeight = 0;
   currentScrollY = 0;
   lastKnownScrollY = 0;

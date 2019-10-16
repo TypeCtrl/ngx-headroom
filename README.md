@@ -4,8 +4,8 @@
   <a href="https://www.npmjs.com/package/@ctrl/ngx-headroom">
     <img src="https://badge.fury.io/js/%40ctrl%2Fngx-headroom.svg" alt="npm">
   </a> 
-  <a href="https://travis-ci.org/TypeCtrl/ngx-headroom">
-    <img src="https://travis-ci.org/TypeCtrl/ngx-headroom.svg?branch=master" alt="travis">
+  <a href="https://circleci.com/gh/TypeCtrl/ngx-headroom">
+    <img src="https://circleci.com/gh/TypeCtrl/ngx-headroom.svg?style=svg" alt="circleci">
   </a> 
   <a href="https://codecov.io/github/typectrl/ngx-headroom">
     <img src="https://img.shields.io/codecov/c/github/typectrl/ngx-headroom.svg" alt="codecov">
@@ -14,11 +14,19 @@
   <br>
 </div>
 
-DEMO: https://typectrl.github.io/ngx-headroom/
+DEMO: https://ngx-headroom.netlify.com/
 
 An Angular Component to hide/show your header on scroll. A port of of [React Headroom](https://github.com/KyleAMathews/react-headroom) by KyleAMathews which was based around [headroom.js](https://github.com/WickyNilliams/headroom.js)
 
 Fixed headers are nice for persistent navigation but they can also get in the way by taking up valuable vertical screen space. Using this component lets you have your persistent navigation while preserving screen space when the navigation is not needed.
+
+## Dependencies
+Latest version available for each version of Angular
+
+| ngx-headroom | Angular     |
+| ------------ | ----------- |
+| 2.3.2        | 6.x 7.x     |
+| current      | >= 8.x      |
 
 ## Install
 
