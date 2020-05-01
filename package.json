@@ -50,7 +50,7 @@
     "ng-packagr": "5.5.1",
     "rimraf": "3.0.2",
     "semantic-release": "17.0.2",
-    "ts-node": "8.6.2",
+    "ts-node": "8.9.1",
     "tsickle": "0.38.0",
     "tslint": "6.0.0",
     "typescript": "3.5.3"
