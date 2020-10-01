@@ -27,7 +27,7 @@
     "@ctrl/ngx-github-buttons": "3.2.8",
     "bootstrap": "4.5.2",
     "core-js": "3.6.4",
-    "rxjs": "6.5.4",
+    "rxjs": "6.6.3",
     "zone.js": "0.10.2"
   },
   "devDependencies": {
