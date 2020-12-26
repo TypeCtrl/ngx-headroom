@@ -2,11 +2,11 @@ export default function(
   lastKnownScrollY = 0,
   currentScrollY = 0,
   disable?: boolean,
-  pinStart?: string,
+  pinStart?: number,
   downTolerance?: number,
   upTolerance?: number,
   state?: string,
-  height?: string,
+  height?: number,
 ) {
   const scrollDirection = currentScrollY >= lastKnownScrollY ? 'down' : 'up';
   const distanceScrolled = Math.abs(currentScrollY - lastKnownScrollY);
@@ -19,7 +19,7 @@ export default function(
       distanceScrolled,
     };
     // We're at the top and not fixed yet.
-  } else if (currentScrollY <= parseInt(pinStart) && state !== 'unfixed') {
+  } else if (currentScrollY <= parseInt(pinStart.toString()) && state !== 'unfixed') {
     return {
       action: 'unfix',
       scrollDirection,
@@ -41,7 +41,7 @@ export default function(
   } else if (
     scrollDirection === 'down' &&
     ['pinned', 'unfixed'].indexOf(state) >= 0 &&
-    currentScrollY > parseInt(height) + parseInt(pinStart) &&
+    currentScrollY > parseInt(height.toString()) + parseInt(pinStart.toString()) &&
     distanceScrolled > downTolerance
   ) {
     return {
@@ -64,7 +64,7 @@ export default function(
     // We transition to pin regardless of upTolerance
   } else if (
     scrollDirection === 'up' &&
-    currentScrollY <= parseInt(height) &&
+    currentScrollY <= parseInt(height.toString()) &&
     ['pinned', 'unfixed'].indexOf(state) < 0
   ) {
     return {
