@@ -19,7 +19,7 @@ export default function(
       distanceScrolled,
     };
     // We're at the top and not fixed yet.
-  } else if (currentScrollY <= pinStart && state !== 'unfixed') {
+  } else if (currentScrollY <= parseInt(pinStart.toString()) && state !== 'unfixed') {
     return {
       action: 'unfix',
       scrollDirection,
@@ -27,7 +27,7 @@ export default function(
     };
     // We're unfixed and headed down. Carry on.
   } else if (
-    currentScrollY <= height &&
+    currentScrollY <= parseInt(height) &&
     scrollDirection === 'down' &&
     state === 'unfixed'
   ) {
@@ -41,7 +41,7 @@ export default function(
   } else if (
     scrollDirection === 'down' &&
     ['pinned', 'unfixed'].indexOf(state) >= 0 &&
-    currentScrollY > height + pinStart &&
+    currentScrollY > parseInt(height.toString()) + parseInt(pinStart.toString()) &&
     distanceScrolled > downTolerance
   ) {
     return {
@@ -64,7 +64,7 @@ export default function(
     // We transition to pin regardless of upTolerance
   } else if (
     scrollDirection === 'up' &&
-    currentScrollY <= height &&
+    currentScrollY <= parseInt(height.toString()) &&
     ['pinned', 'unfixed'].indexOf(state) < 0
   ) {
     return {
