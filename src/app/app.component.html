@@ -1,14 +1,22 @@
 <ngx-headroom (pin)="handlePin()" (unpin)="handleUnpin()">
-  <nav class="navbar navbar-dark" style="background-color: #3f51b5;">
+  <nav class="navbar navbar-dark" style="background-color: #3f51b5">
     <div class="container">
       <div class="navbar-brand">
-        <svg width="30" height="30" class="d-inline-block align-top" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 415.6 512">
-          <path fill="#fff" d="M169.7 268.1h76.2l-38.1-91.6-38.1 91.6zM207.8 32L0 106.4l31.8 275.7 176 97.9 176-97.9 31.8-275.7L207.8 32zM338 373.8h-48.6l-26.2-65.4H152.6l-26.2 65.4H77.7L207.8 81.5 338 373.8z"
+        <svg
+          width="30"
+          height="30"
+          class="d-inline-block align-top"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 415.6 512"
+        >
+          <path
+            fill="#fff"
+            d="M169.7 268.1h76.2l-38.1-91.6-38.1 91.6zM207.8 32L0 106.4l31.8 275.7 176 97.9 176-97.9 31.8-275.7L207.8 32zM338 373.8h-48.6l-26.2-65.4H152.6l-26.2 65.4H77.7L207.8 81.5 338 373.8z"
           />
         </svg>
         Angular Headroom
       </div>
-      <div style="padding-top: 0.3125rem;padding-bottom: 0.3125rem;">
+      <div style="padding-top: 0.3125rem; padding-bottom: 0.3125rem">
         <ntkme-github-button
           size="large"
           user="typectrl"
@@ -27,13 +35,15 @@
       <h1 class="display-4 mb-">Angular Headroom</h1>
       <p class="lead">Hide your header until you need it</p>
       <p>
-        A port of <a href="https://github.com/KyleAMathews/react-headroom" target="_blank">React Headroom</a> by Kyle Mathews, this is an Angular Component to hide/show your header on scroll.
+        A port of
+        <a href="https://github.com/KyleAMathews/react-headroom" target="_blank">React Headroom</a>
+        by Kyle Mathews, this is an Angular Component to hide/show your header on scroll.
       </p>
 
       <p>
-        Fixed headers are nice for persistent navigation but they can also get in the way by taking up valuable vertical screen space.
-        Using this component lets you have your persistent navigation while preserving screen space when the navigation is
-        not needed.
+        Fixed headers are nice for persistent navigation but they can also get in the way by taking
+        up valuable vertical screen space. Using this component lets you have your persistent
+        navigation while preserving screen space when the navigation is not needed.
       </p>
       <p>
         <a href="https://github.com/TypeCtrl/ngx-headroom#ngx-headroom">View Docs</a>
@@ -45,10 +55,10 @@
 <app-footer></app-footer>
 
 <div class="container mt-5">
-  <div class="row justify-content-center" *ngFor="let x of [0,0,0,0,0,0,0,0,0,0,0,0]">
+  <div class="row justify-content-center" *ngFor="let x of [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]">
     <div class="col-lg-6 col-md-8 col-8 mb-3">
-      <div class="card" style="height: 200px;">
-        <table style="height: 200px; width: 100%;">
+      <div class="card" style="height: 200px">
+        <table style="height: 200px; width: 100%">
           <tbody>
             <tr>
               <td class="align-middle text-center">Empty Space</td>
