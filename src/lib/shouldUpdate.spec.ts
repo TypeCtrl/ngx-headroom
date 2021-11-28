@@ -162,7 +162,7 @@ describe('shouldUpdate', () => {
     },
   );
 
-  it('should return an action of \'none\' if haven\'t scrolled past height of header', () => {
+  it("should return an action of 'none' if haven't scrolled past height of header", () => {
     const height = 100;
     const state = 'unfixed';
     const result = shouldUpdate(
@@ -179,8 +179,7 @@ describe('shouldUpdate', () => {
   });
 
   it(
-    'should return an action of `none` if scrolling up ' +
-      'when pinned within height of header',
+    'should return an action of `none` if scrolling up ' + 'when pinned within height of header',
     () => {
       const height = 100;
       const state = 'pinned';
@@ -220,23 +219,13 @@ describe('shouldUpdate', () => {
 
       height = 100;
       state = 'unpinned';
-      result = shouldUpdate(
-        50,
-        1,
-        disable,
-        pinStart,
-        downTolerance,
-        upTolerance,
-        state,
-        height,
-      );
+      result = shouldUpdate(50, 1, disable, pinStart, downTolerance, upTolerance, state, height);
       expect(result.action).toEqual('pin');
     },
   );
 
   it(
-    'should return an action of `none` if scrolling down ' +
-      'when pinned within height of header',
+    'should return an action of `none` if scrolling down ' + 'when pinned within height of header',
     () => {
       const height = 100;
       const state = 'pinned';
@@ -275,7 +264,7 @@ describe('shouldUpdate', () => {
     },
   );
 
-  it('should return an action of \'unfix\' if currentScroll is less than or equal to pinStart', () => {
+  it("should return an action of 'unfix' if currentScroll is less than or equal to pinStart", () => {
     pinStart = 20;
 
     const height = 100;
@@ -293,21 +282,12 @@ describe('shouldUpdate', () => {
 
     expect(result.action).toEqual('unfix');
 
-    result = shouldUpdate(
-      100,
-      20,
-      disable,
-      pinStart,
-      downTolerance,
-      upTolerance,
-      state,
-      height,
-    );
+    result = shouldUpdate(100, 20, disable, pinStart, downTolerance, upTolerance, state, height);
 
     expect(result.action).toEqual('unfix');
   });
 
-  it('should not return an action of \'unfix\' if currentScroll is more than pinStart', () => {
+  it("should not return an action of 'unfix' if currentScroll is more than pinStart", () => {
     pinStart = 20;
     const height = 100;
     const state = 'pinned';
@@ -325,7 +305,7 @@ describe('shouldUpdate', () => {
     expect(result.action).toEqual('none');
   });
 
-  it('should return an action of \'unpin\' if scroll down past height of header', () => {
+  it("should return an action of 'unpin' if scroll down past height of header", () => {
     const height = 100;
     const state = 'unfixed';
     const result = shouldUpdate(
