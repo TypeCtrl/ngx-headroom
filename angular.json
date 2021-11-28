@@ -97,8 +97,21 @@
             ],
             "scripts": []
           }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "src/**/*.ts",
+              "src/**/*.html"
+            ]
+          }
         }
       }
-    }},
-  "defaultProject": "ngx-headroom"
+    }
+  },
+  "defaultProject": "ngx-headroom",
+  "cli": {
+    "defaultCollection": "@angular-eslint/schematics"
+  }
 }
