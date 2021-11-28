@@ -1,10 +1,4 @@
-import {
-  animate,
-  state,
-  style,
-  transition,
-  trigger,
-} from '@angular/animations';
+import { animate, state, style, transition, trigger } from '@angular/animations';
 import { DOCUMENT } from '@angular/common';
 import {
   AfterContentInit,
@@ -25,26 +19,31 @@ import shouldUpdate from './shouldUpdate';
 @Component({
   selector: 'ngx-headroom',
   template: `
-  <div [ngStyle]="wrapperStyle" class="headroom-wrapper {{ wrapperClassName }}"
-    [style.height.px]="wrapperHeight">
-    <div #ref
-      [@headroom]="{
-        value: state,
-        params: {
-          duration: duration,
-          easing: easing
-        }
-      }"
-      [ngStyle]="innerStyle"
-      [class]="innerClassName"
-      [class.headroom]="true"
-      [class.headroom--unfixed]="state === 'unfixed'"
-      [class.headroom--unpinned]="state === 'unpinned'"
-      [class.headroom--pinned]="state === 'pinned'"
-      [class.headroom--unfixed]="state === 'unfixed'">
-      <ng-content></ng-content>
+    <div
+      [ngStyle]="wrapperStyle"
+      class="headroom-wrapper {{ wrapperClassName }}"
+      [style.height.px]="wrapperHeight"
+    >
+      <div
+        #ref
+        [@headroom]="{
+          value: state,
+          params: {
+            duration: duration,
+            easing: easing
+          }
+        }"
+        [ngStyle]="innerStyle"
+        [class]="innerClassName"
+        [class.headroom]="true"
+        [class.headroom--unfixed]="state === 'unfixed'"
+        [class.headroom--unpinned]="state === 'unpinned'"
+        [class.headroom--pinned]="state === 'pinned'"
+        [class.headroom--unfixed]="state === 'unfixed'"
+      >
+        <ng-content></ng-content>
+      </div>
     </div>
-  </div>
   `,
   animations: [
     trigger('headroom', [
@@ -66,10 +65,7 @@ import shouldUpdate from './shouldUpdate';
           transform: 'translateY(0px)',
         }),
       ),
-      transition(
-        'unpinned <=> pinned',
-        animate('{{ duration }}ms {{ easing }}'),
-      ),
+      transition('unpinned <=> pinned', animate('{{ duration }}ms {{ easing }}')),
     ]),
   ],
   preserveWhitespaces: false,
@@ -124,7 +120,8 @@ export class HeadroomComponent implements OnInit, AfterContentInit {
    * `parent` should be a function which resolves to the desired element.
    */
   @Input() parent: () => any;
-  @Input() @HostListener('window:scroll')
+  @Input()
+  @HostListener('window:scroll')
   scroll() {
     this.handleScroll();
   }
@@ -246,20 +243,17 @@ export class HeadroomComponent implements OnInit, AfterContentInit {
   handleUnpin() {
     this.unpin.emit();
     this.state = 'unpinned';
-    this.innerStyle.position =
-      this.disable || this.state === 'unfixed' ? 'relative' : 'fixed';
+    this.innerStyle.position = this.disable || this.state === 'unfixed' ? 'relative' : 'fixed';
   }
   handlePin() {
     this.pin.emit();
     this.state = 'pinned';
-    this.innerStyle.position =
-      this.disable || this.state === 'unfixed' ? 'relative' : 'fixed';
+    this.innerStyle.position = this.disable || this.state === 'unfixed' ? 'relative' : 'fixed';
   }
   handleUnfix() {
     this.unfix.emit();
     this.state = 'unfixed';
-    this.innerStyle.position =
-      this.disable || this.state === 'unfixed' ? 'relative' : 'fixed';
+    this.innerStyle.position = this.disable || this.state === 'unfixed' ? 'relative' : 'fixed';
   }
   update() {
     this.currentScrollY = this.getScrollY();

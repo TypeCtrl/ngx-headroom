@@ -8,19 +8,10 @@ import { HeadroomModule } from '../lib/public_api';
 import { AppFooterComponent } from './app-footer/app-footer.component';
 import { AppComponent } from './app.component';
 
-
 @NgModule({
-  declarations: [
-    AppComponent,
-    AppFooterComponent,
-  ],
-  imports: [
-    BrowserModule,
-    BrowserAnimationsModule,
-    NtkmeButtonModule,
-    HeadroomModule,
-  ],
+  declarations: [AppComponent, AppFooterComponent],
+  imports: [BrowserModule, BrowserAnimationsModule, NtkmeButtonModule, HeadroomModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

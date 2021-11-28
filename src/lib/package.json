@@ -4,9 +4,8 @@
   "version": "0.0.0",
   "description": "Headroom.js implementation in Angular",
   "peerDependencies": {
-    "@angular/animations": ">=10.0.0",
-    "@angular/core": ">=10.0.0",
-    "@angular/common": ">=10.0.0"
+    "@angular/animations": ">=12.0.0",
+    "@angular/core": ">=12.0.0"
   },
   "publishConfig": {
     "access": "public"
@@ -15,7 +14,12 @@
   "homepage": "https://github.com/typectrl/ngx-headroom",
   "license": "MIT",
   "bugs": "https://github.com/typectrl/ngx-headroom/issues",
-  "keywords": ["ngx", "angular", "angular-component", "headroom"],
+  "keywords": [
+    "ngx",
+    "angular",
+    "angular-component",
+    "headroom"
+  ],
   "ngPackage": {
     "lib": {
       "entryFile": "public_api.ts"
