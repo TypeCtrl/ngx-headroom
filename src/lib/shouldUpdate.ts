@@ -1,4 +1,4 @@
-export default function (
+export default function(
   lastKnownScrollY = 0,
   currentScrollY = 0,
   disable?: boolean,
@@ -26,7 +26,11 @@ export default function (
       distanceScrolled,
     };
     // We're unfixed and headed down. Carry on.
-  } else if (currentScrollY <= height && scrollDirection === 'down' && state === 'unfixed') {
+  } else if (
+    currentScrollY <= height &&
+    scrollDirection === 'down' &&
+    state === 'unfixed'
+  ) {
     return {
       action: 'none',
       scrollDirection,

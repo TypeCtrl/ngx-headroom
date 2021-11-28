@@ -24,12 +24,11 @@ Fixed headers are nice for persistent navigation but they can also get in the wa
 
 Latest version available for each version of Angular
 
-| ngx-headroom | Angular   |
-| ------------ | --------- |
-| 2.3.2        | 6.x 7.x   |
-| 3.0.3        | 8.x 9.x   |
-| 4.0.0        | 10.x 11.x |
-| current      | >= 12.x   |
+| ngx-headroom | Angular |
+| ------------ | ------- |
+| 2.3.2        | 6.x 7.x |
+| 3.0.3        | 8.x 9.x |
+| current      | >= 10.x |
 
 ## Install
 
@@ -43,9 +42,9 @@ Import the module. Requires `@angular/animations`
 
 ```ts
 // requires BrowserAnimationsModule
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 // import HeadroomModule
-import { HeadroomModule } from '@ctrl/ngx-headroom';
+import { HeadroomModule } from "@ctrl/ngx-headroom";
 ```
 
 Use the module
