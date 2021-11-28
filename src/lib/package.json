@@ -5,8 +5,7 @@
   "description": "Headroom.js implementation in Angular",
   "peerDependencies": {
     "@angular/animations": ">=12.0.0",
-    "@angular/core": ">=12.0.0",
-    "@angular/common": ">=12.0.0"
+    "@angular/core": ">=12.0.0"
   },
   "publishConfig": {
     "access": "public"
